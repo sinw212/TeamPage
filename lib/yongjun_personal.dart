@@ -1,4 +1,6 @@
 //이용준 개인 페이지
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 class YongjunPersonal extends StatelessWidget {
