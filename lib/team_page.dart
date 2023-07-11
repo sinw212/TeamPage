@@ -1,10 +1,5 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:team_page/Jina_personal.dart';
-import 'package:team_page/choonghwan_personal.dart';
-import 'package:team_page/daeul_personal.dart';
-import 'package:team_page/sohyun_personal.dart';
-import 'package:team_page/yongjun_personal.dart';
+import 'package:team_page/personal_page.dart';
 
 class TeamPage extends StatelessWidget {
   const TeamPage({super.key}); // 생성자
@@ -61,7 +56,7 @@ class TeamPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => ChoongHwanPersonal(),
+                    builder: (_) => PersonalPage("이충환"),
                   ),
                 );
               },
@@ -90,7 +85,7 @@ class TeamPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => DaeulPersonal(),
+                    builder: (_) => PersonalPage("이다을"),
                   ),
                 );
               },
@@ -119,7 +114,7 @@ class TeamPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => JinAPersonal(),
+                    builder: (_) => PersonalPage("김진아"),
                   ),
                 );
               },
@@ -148,7 +143,7 @@ class TeamPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => YongjunPersonal(),
+                    builder: (_) => PersonalPage("이용준"),
                   ),
                 );
               },
@@ -177,7 +172,7 @@ class TeamPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => SohyunPersonal(),
+                    builder: (_) => PersonalPage("김소현"),
                   ),
                 );
               },
