@@ -23,8 +23,8 @@ class TeamPage extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-                    child: Image.asset(
-                      'IMG_7607.png',
+                    child: Image(
+                      image: AssetImage('assets/IMG_7607.png'),
                       width: 200,
                     ),
                   ),

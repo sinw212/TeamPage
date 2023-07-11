@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:team_page/team_page.dart';
+
+import 'team_page.dart';
 
 void main() {
   runApp(MyApp());
