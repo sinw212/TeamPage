@@ -1,47 +1,72 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:team_page/guestbook_service.dart';
+
+import 'guestbook.dart';
 
 class VisitorMemoList extends StatefulWidget {
   const VisitorMemoList({super.key});
 
   @override
-  State<VisitorMemoList> createState() => _HomePageState();
+  State<VisitorMemoList> createState() => _VisitorMemoListState();
 }
 
-class _HomePageState extends State<VisitorMemoList> {
-  List<String> visitList = ["empty"]; // 전체 메모 목록
-
+class _VisitorMemoListState extends State<VisitorMemoList> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("방명록"),
-        backgroundColor: Colors.grey,
-      ),
-      body: visitList.isEmpty
-          ? Center(child: Text("방명록을 작성해 주세요"))
-          : ListView.builder(
-              itemCount: visitList.length, // memoList 개수 만큼 보여주기
-              itemBuilder: (context, index) {
-                String memo = visitList[index]; // index에 해당하는 memo 가져오기
-                return Column(
-                  children: [
-                    ListTile(
-                      title: Text(
-                        memo,
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
+    return Consumer<BookService>(builder: (context, bookService, child) {
+      List<Book> bookList = bookService.bookList;
+
+      return Scaffold(
+        appBar: AppBar(
+          title: Text("방명록 작성하기"),
+        ),
+        body: bookList.isEmpty
+            ? Center(child: Text("방명록을 작성해 주세요"))
+            : ListView.builder(
+                itemCount: bookList.length,
+                itemBuilder: (context, index) {
+                  Book memo = bookList[index];
+                  return Column(
+                    children: [
+                      ListTile(
+                        title: Text(
+                          memo.content,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => CreateMemoPage(
+                                index: index,
+                              ),
+                            ),
+                          );
+                        },
                       ),
-                      onTap: () {},
-                    ),
-                    Container(
-                      height: 1,
-                      color: Colors.black,
-                    )
-                  ],
-                );
-              },
-            ),
-    );
+                      Container(height: 1, color: Colors.black)
+                    ],
+                  );
+                },
+              ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            bookService.createBook(content: '');
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => CreateMemoPage(
+                  index: bookService.bookList.length - 1,
+                ),
+              ),
+            );
+          },
+        ),
+      );
+    });
   }
 }

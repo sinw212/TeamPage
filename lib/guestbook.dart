@@ -1,56 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-// MultiProvider(
-//       providers: [
-//         ChangeNotifierProvider(create: (context) => GuestbookService()),
-//       ],
+import 'guestbook_service.dart';
 
-class crateMemoPage extends StatelessWidget {
-  const crateMemoPage({
-    super.key,
-    /*required this.index*/
-  });
+class CreateMemoPage extends StatelessWidget {
+  CreateMemoPage({super.key, required this.index});
 
-  // final int index;
-  // TextEditingController contentController = TextEditingController();
+  final int index;
+
+  TextEditingController contentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    // GuestbookService guestbookService = context.read<GuestbookService>();
-    // Memo memo =
+    BookService bookService = context.read<BookService>();
+    Book book = bookService.bookList[index];
+
+    contentController.text = book.content;
+
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        leading: IconButton(onPressed: () => {}, icon: Icon(Icons.arrow_back)),
-      ),
-      body: Column(
-        children: [
-          Flexible(
-            flex: 2,
-            child: TextField(
-              keyboardType: TextInputType.multiline,
-              maxLines: 2,
-              // onChanged: (value) {
-              //   updateMemoTitle(index: index, content: content)
-              // },
-              decoration: InputDecoration(
-                hintText: "제목",
-                border: OutlineInputBorder(),
-              ),
-            ),
-          ),
-          Flexible(
-            flex: 8,
-            child: TextField(
-              keyboardType: TextInputType.multiline,
-              maxLines: 8,
-              decoration: InputDecoration(
-                hintText: "내용",
-                border: OutlineInputBorder(),
-              ),
-            ),
-          ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              // 삭제 버튼 클릭시
+            },
+            icon: Icon(Icons.delete),
+          )
         ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: TextField(
+            controller: contentController,
+            decoration: const InputDecoration(
+                hintText: "방명록을 입력하세요",
+                border: InputBorder.none,
+                filled: true,
+                fillColor: Color(0xffD9D9D9)),
+            autofocus: true,
+            maxLines: null,
+            expands: true,
+            keyboardType: TextInputType.multiline,
+            onChanged: (value) {}),
       ),
     );
   }

@@ -27,12 +27,11 @@ class TeamPage extends StatelessWidget {
                     margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-                    child: Image.asset(
-                      'IMG_7607.png',
-                      width: 200,
-                    ),
-                  ),
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                      child: Image(
+                        image: AssetImage('assets/IMG_7607.png'),
+                        width: 200,
+                      )),
                   Text(
                     "안녕하세요 Fourfect 입니다 :)",
                     style: TextStyle(
