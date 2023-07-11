@@ -1,22 +1,21 @@
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-// class Memo {
-//   Memo({
-//     required this.content,
-//   });
+class Book {
+  Book({
+    required this.content,
+  });
+  String content;
+}
 
-//   String content;
+class BookService extends ChangeNotifier {
+  List<Book> bookList = [
+    Book(content: '첫 방명록'),
+    Book(content: '두번째 방명록'),
+  ];
 
-//   Map toJson() {
-//     return {'content': content};
-//   }
-
-//   factory Memo.fromJson(json) {
-//     return Memo(content: json['content']);
-//   }
-// }
-
-// class GuestbookService extends ChangeNotifier {
-//   updateMemoTitle({required int index, required String content}) {}
-//   updateMemoContent({required int index, required String content}) {}
-// }
+  createBook({required String content}) {
+    Book book = Book(content: content);
+    bookList.add(book);
+    notifyListeners();
+  }
+}
