@@ -2,12 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:team_page/guestbook_service.dart';
-
 import 'guestbook.dart';
 
 class VisitorMemoList extends StatefulWidget {
   const VisitorMemoList({super.key});
-
   @override
   State<VisitorMemoList> createState() => _VisitorMemoListState();
 }
@@ -17,7 +15,6 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
   Widget build(BuildContext context) {
     return Consumer<BookService>(builder: (context, bookService, child) {
       List<Book> bookList = bookService.bookList;
-
       return Scaffold(
         appBar: AppBar(
           title: Text("방명록 작성하기"),
