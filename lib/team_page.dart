@@ -9,6 +9,7 @@ class TeamPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xff333333),
       appBar: AppBar(
+        backgroundColor: Color(0xffFCD610),
         title: Text("팀 Fourfect"),
       ),
       body: Column(
