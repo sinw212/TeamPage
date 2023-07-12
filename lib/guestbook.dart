@@ -33,22 +33,28 @@ class CreateMemoPage extends StatelessWidget {
         actions: [
           TextButton(
               onPressed: () {
-                if (contentValue.isNotEmpty) {
+                String contentS = contentController.text;
+                String substanceS = substanceController.text;
+                String nameS = nameController.text;
+                String keyS = keyController.text;
+
+                if (contentS.isNotEmpty &&
+                    substanceS.isNotEmpty &&
+                    nameS.isNotEmpty &&
+                    keyS.isNotEmpty) {
                   bookService.updateBook(
                       index: index,
-                      content: contentValue,
-                      substance: substanceValue,
-                      name: nameValue,
-                      key: keyValue);
+                      content: contentS,
+                      substance: substanceS,
+                      name: nameS,
+                      key: keyS);
                   Navigator.pop(context);
                 } else {
                   showDialog(
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        title: Text(isModify
-                            ? "내용이 수정되지 않은 메모는 수정이 불가합니다."
-                            : "내용이 없는 메모는 저장이 불가합니다."),
+                        title: Text("모든 내용을 입력해야 저장, 수정이 가능합니다."),
                         actions: [
                           TextButton(
                             onPressed: () {
@@ -84,9 +90,7 @@ class CreateMemoPage extends StatelessWidget {
                   maxLines: 1,
                   expands: false,
                   keyboardType: TextInputType.multiline,
-                  onChanged: (value) {
-                    contentValue = value;
-                  }),
+                  onChanged: (value) {}),
               SizedBox(height: 20),
               TextField(
                   controller: substanceController,
@@ -99,9 +103,7 @@ class CreateMemoPage extends StatelessWidget {
                   maxLines: 10,
                   expands: false,
                   keyboardType: TextInputType.multiline,
-                  onChanged: (value) {
-                    substanceValue = value;
-                  }),
+                  onChanged: (value) {}),
               SizedBox(height: 20),
               TextField(
                   controller: nameController,
@@ -114,9 +116,7 @@ class CreateMemoPage extends StatelessWidget {
                   maxLines: 1,
                   expands: false,
                   keyboardType: TextInputType.multiline,
-                  onChanged: (value) {
-                    nameValue = value;
-                  }),
+                  onChanged: (value) {}),
               SizedBox(height: 20),
               TextField(
                   controller: keyController,
@@ -129,9 +129,7 @@ class CreateMemoPage extends StatelessWidget {
                   maxLines: 1,
                   expands: false,
                   keyboardType: TextInputType.multiline,
-                  onChanged: (value) {
-                    keyValue = value;
-                  }),
+                  onChanged: (value) {}),
             ],
           ),
         ),
