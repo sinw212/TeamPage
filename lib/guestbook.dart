@@ -10,8 +10,14 @@ class CreateMemoPage extends StatelessWidget {
   final bool isModify;
 
   TextEditingController contentController = TextEditingController();
+  TextEditingController substanceController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController keyController = TextEditingController();
 
   String contentValue = "";
+  String substanceValue = "";
+  String nameValue = "";
+  String keyValue = "";
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +25,9 @@ class CreateMemoPage extends StatelessWidget {
     Book book = bookService.bookList[index];
 
     contentController.text = book.content;
+    substanceController.text = book.substance;
+    nameController.text = book.name;
+    keyController.text = book.key;
 
     return Scaffold(
       appBar: AppBar(
@@ -26,7 +35,12 @@ class CreateMemoPage extends StatelessWidget {
           TextButton(
               onPressed: () {
                 if (contentValue.isNotEmpty) {
-                  bookService.updateBook(index: index, content: contentValue);
+                  bookService.updateBook(
+                      index: index,
+                      content: contentValue,
+                      substance: substanceValue,
+                      name: nameValue,
+                      key: keyValue);
                   Navigator.pop(context);
                 } else {
                   showDialog(
@@ -55,22 +69,73 @@ class CreateMemoPage extends StatelessWidget {
               ))
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: TextField(
-            controller: contentController,
-            decoration: const InputDecoration(
-                hintText: "방명록을 입력하세요",
-                border: InputBorder.none,
-                filled: true,
-                fillColor: Color(0xffD9D9D9)),
-            autofocus: true,
-            maxLines: null,
-            expands: true,
-            keyboardType: TextInputType.multiline,
-            onChanged: (value) {
-              contentValue = value;
-            }),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              TextField(
+                  controller: contentController,
+                  decoration: const InputDecoration(
+                      hintText: "제목을 입력하세요",
+                      border: InputBorder.none,
+                      filled: true,
+                      fillColor: Color(0xFFEEEEEE)),
+                  autofocus: false,
+                  maxLines: 1,
+                  expands: false,
+                  keyboardType: TextInputType.multiline,
+                  onChanged: (value) {
+                    contentValue = value;
+                  }),
+              SizedBox(height: 20),
+              TextField(
+                  controller: substanceController,
+                  decoration: const InputDecoration(
+                      hintText: "내용을 입력하세요",
+                      border: InputBorder.none,
+                      filled: true,
+                      fillColor: Color(0xFFEEEEEE)),
+                  autofocus: false,
+                  maxLines: 10,
+                  expands: false,
+                  keyboardType: TextInputType.multiline,
+                  onChanged: (value) {
+                    substanceValue = value;
+                  }),
+              SizedBox(height: 20),
+              TextField(
+                  controller: nameController,
+                  decoration: const InputDecoration(
+                      hintText: "이름",
+                      border: InputBorder.none,
+                      filled: true,
+                      fillColor: Color(0xFFEEEEEE)),
+                  autofocus: false,
+                  maxLines: 1,
+                  expands: false,
+                  keyboardType: TextInputType.multiline,
+                  onChanged: (value) {
+                    nameValue = value;
+                  }),
+              SizedBox(height: 20),
+              TextField(
+                  controller: keyController,
+                  decoration: const InputDecoration(
+                      hintText: "비밀번호",
+                      border: InputBorder.none,
+                      filled: true,
+                      fillColor: Color(0xFFEEEEEE)),
+                  autofocus: false,
+                  maxLines: 1,
+                  expands: false,
+                  keyboardType: TextInputType.multiline,
+                  onChanged: (value) {
+                    keyValue = value;
+                  }),
+            ],
+          ),
+        ),
       ),
     );
   }

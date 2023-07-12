@@ -89,7 +89,8 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () async {
-            bookService.createBook(content: '');
+            bookService.createBook(
+                content: '', substance: '', name: '', key: '');
             await Navigator.push(
               context,
               MaterialPageRoute(
