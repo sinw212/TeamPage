@@ -27,7 +27,6 @@ class CreateMemoPage extends StatelessWidget {
     contentController.text = book.content;
     substanceController.text = book.substance;
     nameController.text = book.name;
-    keyController.text = book.key;
 
     return Scaffold(
       appBar: AppBar(
