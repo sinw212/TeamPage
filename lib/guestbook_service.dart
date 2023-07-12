@@ -74,6 +74,10 @@ class BookService extends ChangeNotifier {
     saveBookList();
   }
 
+  checkPassword({required int index}) {
+    return bookList[index].key;
+  }
+
   saveBookList() {
     List bookJsonList = bookList.map((memo) => memo.toJson()).toList();
     String jsonString = jsonEncode(bookJsonList);

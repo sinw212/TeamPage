@@ -14,6 +14,8 @@ class VisitorMemoList extends StatefulWidget {
 }
 
 class _VisitorMemoListState extends State<VisitorMemoList> {
+  TextEditingController keyController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Consumer<BookService>(builder: (context, bookService, child) {
@@ -54,25 +56,36 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
                                   context: context,
                                   builder: (context) {
                                     return AlertDialog(
-                                      title: Text("정말로 삭제하시겠습니까?"),
+                                      title: Text("삭제를 원하실 경우 비밀번호를 입력해주세요."),
                                       actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text("취소"),
-                                        ),
-                                        TextButton(
-                                          onPressed: () {
-                                            bookService.deleteMemo(
-                                                index: index);
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                            "확인",
-                                            style:
-                                                TextStyle(color: Colors.pink),
-                                          ),
+                                        TextField(controller: keyController),
+                                        Row(
+                                          children: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text("취소"),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                if (keyController.text ==
+                                                    bookService.checkPassword(
+                                                        index: index)) {
+                                                  bookService.deleteMemo(
+                                                      index: index);
+                                                  Navigator.pop(context);
+                                                } else {
+                                                  Navigator.pop(context);
+                                                }
+                                              },
+                                              child: Text(
+                                                "확인",
+                                                style: TextStyle(
+                                                    color: Colors.pink),
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     );
