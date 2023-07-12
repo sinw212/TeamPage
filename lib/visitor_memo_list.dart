@@ -95,18 +95,55 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
                               icon: Icon(Icons.delete)),
                           IconButton(
                               onPressed: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (_) => CreateMemoPage(
-                                      index: index,
-                                      isModify: true,
-                                    ),
-                                  ),
-                                );
-                                if (memo.content.isEmpty) {
-                                  bookService.deleteMemo(index: index);
-                                }
+                                showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return AlertDialog(
+                                        title: Text("수정을 원하실 경우 비밀번호를 입력해주세요."),
+                                        actions: [
+                                          TextField(controller: keyController),
+                                          Row(
+                                            children: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text("취소"),
+                                              ),
+                                              TextButton(
+                                                onPressed: () {
+                                                  if (keyController.text ==
+                                                      bookService.checkPassword(
+                                                          index: index)) {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (_) =>
+                                                            CreateMemoPage(
+                                                          index: index,
+                                                          isModify: true,
+                                                        ),
+                                                      ),
+                                                    );
+                                                    if (memo.content.isEmpty) {
+                                                      bookService.deleteMemo(
+                                                          index: index);
+                                                    }
+                                                  } else {
+                                                    Navigator.pop(context);
+                                                  }
+                                                },
+                                                child: Text(
+                                                  "확인",
+                                                  style: TextStyle(
+                                                      color: Colors.pink),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      );
+                                    });
                               },
                               icon: Icon(Icons.edit))
                         ]),
