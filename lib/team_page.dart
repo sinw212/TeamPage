@@ -23,7 +23,7 @@ class TeamPage extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
                       child: Image(
-                        image: AssetImage('logo_fourfect.png'),
+                        image: AssetImage('assets/logo_fourfect.png'),
                       ),
                     ),
                     Text(
