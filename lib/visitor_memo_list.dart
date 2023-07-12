@@ -36,16 +36,50 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        onTap: () {
-                          Navigator.push(
+                        onTap: () async {
+                          await Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (_) => CreateMemoPage(
                                 index: index,
+                                isModify: true,
                               ),
                             ),
                           );
+                          if (memo.content.isEmpty) {
+                            bookService.deleteMemo(index: index);
+                          }
                         },
+                        trailing: IconButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: Text("정말로 삭제하시겠습니까?"),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text("취소"),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          bookService.deleteMemo(index: index);
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                          "확인",
+                                          style: TextStyle(color: Colors.pink),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            icon: Icon(Icons.delete)),
                       ),
                       Container(height: 1, color: Colors.black)
                     ],
@@ -54,16 +88,20 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
               ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
-          onPressed: () {
+          onPressed: () async {
             bookService.createBook(content: '');
-            Navigator.push(
+            await Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (_) => CreateMemoPage(
                   index: bookService.bookList.length - 1,
+                  isModify: false,
                 ),
               ),
             );
+            if (bookList[bookService.bookList.length - 1].content.isEmpty) {
+              bookService.deleteMemo(index: bookList.length - 1);
+            }
           },
         ),
       );
