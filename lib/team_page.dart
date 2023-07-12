@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:team_page/personal_page.dart';
 import 'package:team_page/visitor_memo_list.dart';
 
+import 'team_introduce_page.dart';
+
 class TeamPage extends StatelessWidget {
   TeamPage({super.key}); // 생성자
   final name = ['이충환', '이다을', '김진아', '이용준', '김소현'];
@@ -68,7 +70,17 @@ class TeamPage extends StatelessWidget {
                             child: Icon(Icons.home),
                           ),
                           SizedBox(
-                            child: Text('팀 페이지'),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => TeamIntroducePage(),
+                                  ),
+                                );
+                              },
+                              child: Text('팀 페이지'),
+                            ),
                           ),
                         ],
                       ),
