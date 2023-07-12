@@ -18,4 +18,10 @@
 - 개인 소개 페이지
 - 방명록 리스트 페이지
 - 방명록 작성 페이지
-- 
+
+
+## 사용 기술 
+
+- Flutter
+- Provider
+- Shared Preference
