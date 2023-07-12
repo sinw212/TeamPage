@@ -118,7 +118,6 @@ class TeamPage extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
                 itemCount: name.length,
                 itemBuilder: (context, i) {
                   return Container(
