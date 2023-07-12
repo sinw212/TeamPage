@@ -52,6 +52,7 @@ class PersonalPage extends StatelessWidget {
     ];
 
     return Scaffold(
+      backgroundColor: Color(0xff333333),
       appBar: AppBar(
         backgroundColor: Color(0xffFCD610),
         title: Text(
