@@ -3,26 +3,37 @@ import 'package:provider/provider.dart';
 
 import 'guestbook_service.dart';
 
-class CreateMemoPage extends StatelessWidget {
+class CreateMemoPage extends StatefulWidget {
   CreateMemoPage({super.key, required this.index, required this.isModify});
 
   final int index;
   final bool isModify;
 
+  @override
+  State<CreateMemoPage> createState() => _CreateMemoPageState();
+}
+
+class _CreateMemoPageState extends State<CreateMemoPage> {
   TextEditingController contentController = TextEditingController();
+
   TextEditingController substanceController = TextEditingController();
+
   TextEditingController nameController = TextEditingController();
+
   TextEditingController keyController = TextEditingController();
 
   String contentValue = "";
+
   String substanceValue = "";
+
   String nameValue = "";
+
   String keyValue = "";
 
   @override
   Widget build(BuildContext context) {
     BookService bookService = context.read<BookService>();
-    Book book = bookService.bookList[index];
+    Book book = bookService.bookList[widget.index];
 
     contentController.text = book.content;
     substanceController.text = book.substance;
@@ -43,7 +54,7 @@ class CreateMemoPage extends StatelessWidget {
                     nameS.isNotEmpty &&
                     keyS.isNotEmpty) {
                   bookService.updateBook(
-                      index: index,
+                      index: widget.index,
                       content: contentS,
                       substance: substanceS,
                       name: nameS,
@@ -69,7 +80,7 @@ class CreateMemoPage extends StatelessWidget {
                 }
               },
               child: Text(
-                isModify ? "수정" : "저장",
+                widget.isModify ? "수정" : "저장",
                 style: TextStyle(color: Colors.white),
               ))
         ],
