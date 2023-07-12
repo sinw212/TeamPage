@@ -11,25 +11,6 @@ class TeamPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
-        backgroundColor: Color(0xff333333),
-        appBar: AppBar(
-          title: Text("팀 Fourfect"),
-        ),
-        body: Container(
-          margin: EdgeInsets.fromLTRB(40, 60, 40, 60),
-          child: Column(
-            children: [
-              Container(
-                margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                child: Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                      child: Image(
-                        image: AssetImage('assets/logo_fourfect.png'),
-                      ),
-=======
       backgroundColor: Color(0xff333333),
       appBar: AppBar(
         title: Text("팀 Fourfect"),
@@ -46,7 +27,6 @@ class TeamPage extends StatelessWidget {
                     margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
                     child: Image(
                       image: AssetImage('assets/logo_fourfect.png'),
->>>>>>> 756f949c85c0cb7ef0099b07d7902eda123728ba
                     ),
                   ),
                   Text(
@@ -141,7 +121,6 @@ class TeamPage extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
                 itemCount: name.length,
                 itemBuilder: (context, i) {
                   return Container(
