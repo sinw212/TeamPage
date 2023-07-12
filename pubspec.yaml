@@ -61,6 +61,7 @@ flutter:
     - assets/daeul_personal_img.jpg
     - assets/jina_personal_img.jpeg
     - assets/sohyun_personal_img.jpg
+    - assets/logo.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
