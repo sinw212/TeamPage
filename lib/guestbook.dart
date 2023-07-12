@@ -4,11 +4,14 @@ import 'package:provider/provider.dart';
 import 'guestbook_service.dart';
 
 class CreateMemoPage extends StatelessWidget {
-  CreateMemoPage({super.key, required this.index});
+  CreateMemoPage({super.key, required this.index, required this.isModify});
 
   final int index;
+  final bool isModify;
 
   TextEditingController contentController = TextEditingController();
+
+  String contentValue = "";
 
   @override
   Widget build(BuildContext context) {
@@ -20,38 +23,36 @@ class CreateMemoPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: Text("정말로 삭제하시겠습니까?"),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text("취소"),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          bookService.deleteMemo(index: index);
-                          Navigator.pop(context);
-                          Navigator.pop(context);
-                        },
-                        child: Text(
-                          "확인",
-                          style: TextStyle(color: Colors.pink),
-                        ),
-                      ),
-                    ],
+          TextButton(
+              onPressed: () {
+                if (contentValue.isNotEmpty) {
+                  bookService.updateBook(index: index, content: contentValue);
+                  Navigator.pop(context);
+                } else {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text(isModify
+                            ? "내용이 수정되지 않은 메모는 수정이 불가합니다."
+                            : "내용이 없는 메모는 저장이 불가합니다."),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text("확인"),
+                          ),
+                        ],
+                      );
+                    },
                   );
-                },
-              );
-            },
-            icon: Icon(Icons.delete),
-          )
+                }
+              },
+              child: Text(
+                isModify ? "수정" : "저장",
+                style: TextStyle(color: Colors.white),
+              ))
         ],
       ),
       body: Padding(
@@ -68,7 +69,7 @@ class CreateMemoPage extends StatelessWidget {
             expands: true,
             keyboardType: TextInputType.multiline,
             onChanged: (value) {
-              bookService.updateBook(index: index, content: value);
+              contentValue = value;
             }),
       ),
     );
