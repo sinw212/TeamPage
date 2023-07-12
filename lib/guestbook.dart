@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'guestbook_service.dart';
+import 'themes/colors.dart';
+import 'themes/textStyles.dart';
 
 class CreateMemoPage extends StatefulWidget {
   CreateMemoPage({super.key, required this.index, required this.isModify});
@@ -41,6 +43,7 @@ class _CreateMemoPageState extends State<CreateMemoPage> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: ColorStyles.kAppBar,
         actions: [
           TextButton(
               onPressed: () {
@@ -81,7 +84,7 @@ class _CreateMemoPageState extends State<CreateMemoPage> {
               },
               child: Text(
                 widget.isModify ? "수정" : "저장",
-                style: TextStyle(color: Colors.white),
+                style: TextStyles.kWhiteTextStyle,
               ))
         ],
       ),
@@ -96,7 +99,7 @@ class _CreateMemoPageState extends State<CreateMemoPage> {
                       hintText: "제목을 입력하세요",
                       border: InputBorder.none,
                       filled: true,
-                      fillColor: Color(0xFFEEEEEE)),
+                      fillColor: ColorStyles.kLightGrey),
                   autofocus: false,
                   maxLines: 1,
                   expands: false,
@@ -109,7 +112,7 @@ class _CreateMemoPageState extends State<CreateMemoPage> {
                       hintText: "내용을 입력하세요",
                       border: InputBorder.none,
                       filled: true,
-                      fillColor: Color(0xFFEEEEEE)),
+                      fillColor: ColorStyles.kLightGrey),
                   autofocus: false,
                   maxLines: 10,
                   expands: false,
@@ -122,7 +125,7 @@ class _CreateMemoPageState extends State<CreateMemoPage> {
                       hintText: "이름",
                       border: InputBorder.none,
                       filled: true,
-                      fillColor: Color(0xFFEEEEEE)),
+                      fillColor: ColorStyles.kLightGrey),
                   autofocus: false,
                   maxLines: 1,
                   expands: false,
@@ -135,7 +138,7 @@ class _CreateMemoPageState extends State<CreateMemoPage> {
                       hintText: "비밀번호",
                       border: InputBorder.none,
                       filled: true,
-                      fillColor: Color(0xFFEEEEEE)),
+                      fillColor: ColorStyles.kLightGrey),
                   autofocus: false,
                   maxLines: 1,
                   expands: false,

@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:team_page/guestbook_service.dart';
 
 import 'guestbook.dart';
+import 'themes/colors.dart';
+import 'themes/textStyles.dart';
 
 class VisitorMemoList extends StatefulWidget {
   const VisitorMemoList({super.key});
@@ -20,6 +22,7 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
 
       return Scaffold(
         appBar: AppBar(
+          backgroundColor: ColorStyles.kAppBar,
           title: Text("방명록 작성하기"),
         ),
         body: bookList.isEmpty
@@ -71,7 +74,8 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
                                         },
                                         child: Text(
                                           "확인",
-                                          style: TextStyle(color: Colors.pink),
+                                          style: TextStyles
+                                              .kAlertDialogPositiveTextStyle,
                                         ),
                                       ),
                                     ],
@@ -81,7 +85,7 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
                             },
                             icon: Icon(Icons.delete)),
                       ),
-                      Container(height: 1, color: Colors.black)
+                      Container(height: 1, color: ColorStyles.kBlack)
                     ],
                   );
                 },
