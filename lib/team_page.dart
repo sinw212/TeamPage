@@ -82,10 +82,17 @@ class TeamPage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => TeamIntroducePage(),
+                          ),
+                        );
+                      },
                       style: TextButton.styleFrom(
                           backgroundColor: Color(0xff111111).withOpacity(0.5),
-                          primary: Color(0xffffffff),
+                          foregroundColor: Color(0xffffffff),
                           minimumSize: Size(100, 60),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.zero)),
@@ -97,17 +104,7 @@ class TeamPage extends StatelessWidget {
                             child: Icon(Icons.home),
                           ),
                           SizedBox(
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (_) => TeamIntroducePage(),
-                                  ),
-                                );
-                              },
-                              child: Text('팀 페이지'),
-                            ),
+                            child: Text('팀 페이지'),
                           ),
                         ],
                       ),
@@ -125,7 +122,7 @@ class TeamPage extends StatelessWidget {
                       },
                       style: TextButton.styleFrom(
                           backgroundColor: Color(0xff111111).withOpacity(0.5),
-                          primary: Color(0xffffffff),
+                          foregroundColor: Color(0xffffffff),
                           minimumSize: Size(100, 60),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.zero)),
