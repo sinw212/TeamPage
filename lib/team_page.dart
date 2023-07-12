@@ -3,6 +3,8 @@ import 'package:team_page/personal_page.dart';
 import 'package:team_page/visitor_memo_list.dart';
 
 import 'team_introduce_page.dart';
+import 'themes/colors.dart';
+import 'themes/textStyles.dart';
 
 class TeamPage extends StatelessWidget {
   TeamPage({super.key}); // 생성자
@@ -11,8 +13,9 @@ class TeamPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff333333),
+      backgroundColor: ColorStyles.kMainBackground,
       appBar: AppBar(
+        backgroundColor: ColorStyles.kAppBar,
         title: Text("팀 Fourfect"),
       ),
       body: Container(
@@ -29,27 +32,21 @@ class TeamPage extends StatelessWidget {
                       image: AssetImage('assets/logo_fourfect.png'),
                     ),
                   ),
-                  Text(
-                    "안녕하세요 Fourfect 입니다 :)",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 23,
-                      color: Color(0xffeeeeee),
-                    ),
-                  ),
-                  Text(
-                    "숫자 4와 perfect의 뜻을 합친 이름으로 우리들의 창의적인 사고와 실행력으로 완벽한 결과물을 낼 수 있도록 최선을다하겠습니다!",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Color(0xffeeeeee),
-                      fontSize: 15,
+                  Text("안녕하세요 Fourfect 입니다 :)",
+                      style: TextStyles.kTeamPageTitleTextStyle),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Text(
+                      "숫자 4와 perfect의 뜻을 합친 이름으로,\n우리들의 창의적인 사고와 실행력으로 완벽한\n결과물을 낼 수 있도록 최선을 다하겠습니다!",
+                      textAlign: TextAlign.center,
+                      style: TextStyles.kTeamPageNormalTextStyle,
                     ),
                   ),
                 ],
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -64,8 +61,9 @@ class TeamPage extends StatelessWidget {
                         );
                       },
                       style: TextButton.styleFrom(
-                          backgroundColor: Color(0xff111111).withOpacity(0.5),
-                          foregroundColor: Color(0xffffffff),
+                          backgroundColor:
+                              ColorStyles.kDarkGrey.withOpacity(0.5),
+                          foregroundColor: ColorStyles.kWhite,
                           minimumSize: Size(100, 60),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.zero)),
@@ -94,8 +92,9 @@ class TeamPage extends StatelessWidget {
                         );
                       },
                       style: TextButton.styleFrom(
-                          backgroundColor: Color(0xff111111).withOpacity(0.5),
-                          foregroundColor: Color(0xffffffff),
+                          backgroundColor:
+                              ColorStyles.kDarkGrey.withOpacity(0.5),
+                          foregroundColor: ColorStyles.kWhite,
                           minimumSize: Size(100, 60),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.zero)),
@@ -132,7 +131,8 @@ class TeamPage extends StatelessWidget {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xffeeeeee).withOpacity(0.1),
+                        backgroundColor:
+                            ColorStyles.kLightGrey.withOpacity(0.1),
                         minimumSize: Size(double.infinity, 60),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30)),
