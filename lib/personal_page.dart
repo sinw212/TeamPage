@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import 'themes/colors.dart';
+import 'themes/textStyles.dart';
+
 class PersonalPage extends StatelessWidget {
   final String name;
 
@@ -61,12 +64,10 @@ class PersonalPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xffFCD610),
+        backgroundColor: ColorStyles.kAppBar,
         title: Text(
           "개인 프로필 ($name)",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyles.kBoldTextStyle,
         ),
       ),
       body: Padding(
@@ -90,7 +91,7 @@ class PersonalPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Container(
                     width: double.infinity,
-                    color: Color(0xffeeeeee),
+                    color: ColorStyles.kLightGrey,
                     margin: EdgeInsets.fromLTRB(8, 4, 8, 8),
                     padding: EdgeInsets.all(20),
                     child: Column(
@@ -153,7 +154,7 @@ class WebViewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey,
+        backgroundColor: ColorStyles.kAppBar,
         title: Text(url),
       ),
       body: WebView(initialUrl: url),
