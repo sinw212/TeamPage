@@ -61,6 +61,7 @@ class PersonalPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xffFCD610),
         title: Text(
           "개인 프로필 ($name)",
           style: TextStyle(

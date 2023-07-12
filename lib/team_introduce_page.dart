@@ -14,7 +14,7 @@ class TeamIntroducePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 100.0),
             child: Image(
-              image: AssetImage('assets/logo.png'),
+              image: AssetImage('assets/logo_fourfect.png'),
               width: 300,
               fit: BoxFit.cover,
             ),

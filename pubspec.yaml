@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter_native_splash: ^2.2.4
   flutter:
     sdk: flutter
 
@@ -61,7 +62,7 @@ flutter:
     - assets/daeul_personal_img.jpg
     - assets/jina_personal_img.jpeg
     - assets/sohyun_personal_img.jpg
-    - assets/logo.png
+    - assets/logo_fourfect.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
