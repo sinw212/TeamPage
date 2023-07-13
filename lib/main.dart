@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'guestbook_service.dart';
-import 'team_page.dart';
+import 'fourfect_main.dart';
 
 late SharedPreferences prefs;
 void main() async {
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: TeamPage(),
+      home: FourfectMain(),
     );
   }
 }

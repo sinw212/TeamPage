@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'themes/colors.dart';
-import 'themes/textStyles.dart';
+import 'themes/text_styles.dart';
 
 class PersonalPage extends StatelessWidget {
   final String name;
@@ -98,10 +98,7 @@ class PersonalPage extends StatelessWidget {
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
                           child: Text(
                             personalList[index]['question'],
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: TextStyles.kQuestionTextStyle,
                           ),
                         ),
                         GestureDetector(
@@ -120,10 +117,7 @@ class PersonalPage extends StatelessWidget {
                           child: (personalList[index][name].contains("https"))
                               ? Text(
                                   personalList[index][name],
-                                  style: TextStyle(
-                                    color: Colors.blue,
-                                    decoration: TextDecoration.underline,
-                                  ),
+                                  style: TextStyles.kWebViewTextStyle,
                                 )
                               : Text(
                                   personalList[index][name],

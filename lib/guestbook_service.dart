@@ -68,7 +68,7 @@ class BookService extends ChangeNotifier {
     saveBookList();
   }
 
-  deleteMemo({required int index}) {
+  deleteBook({required int index}) {
     bookList.removeAt(index);
     notifyListeners();
     saveBookList();
