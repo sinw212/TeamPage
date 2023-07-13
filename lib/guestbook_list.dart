@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:team_page/guestbook_service.dart';
-import 'package:team_page/guestbook_view.dart';
-
+import 'guestbook_service.dart';
+import 'guestbook_detail.dart';
 import 'guestbook.dart';
 import 'themes/colors.dart';
-import 'themes/textStyles.dart';
+import 'themes/text_styles.dart';
 
 class VisitorMemoList extends StatefulWidget {
   const VisitorMemoList({super.key});

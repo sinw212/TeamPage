@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'guestbook_service.dart';
 import 'themes/colors.dart';
-import 'themes/textStyles.dart';
+import 'themes/text_styles.dart';
 
 class CreateMemoPage extends StatefulWidget {
   CreateMemoPage({super.key, required this.index, required this.isModify});
