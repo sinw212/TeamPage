@@ -5,6 +5,8 @@ import 'package:team_page/guestbook_service.dart';
 import 'package:team_page/guestbook_view.dart';
 
 import 'guestbook.dart';
+import 'themes/colors.dart';
+import 'themes/textStyles.dart';
 
 class VisitorMemoList extends StatefulWidget {
   const VisitorMemoList({super.key});
@@ -21,6 +23,7 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
       List<Book> bookList = bookService.bookList;
       return Scaffold(
         appBar: AppBar(
+          backgroundColor: ColorStyles.kAppBar,
           title: Text("방명록 작성하기"),
         ),
         body: bookList.isEmpty
@@ -79,8 +82,8 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
                                               },
                                               child: Text(
                                                 "확인",
-                                                style: TextStyle(
-                                                    color: Colors.pink),
+                                                style: TextStyles
+                                                    .kAlertDialogPositiveTextStyle,
                                               ),
                                             ),
                                           ],
@@ -133,8 +136,8 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
                                                 },
                                                 child: Text(
                                                   "확인",
-                                                  style: TextStyle(
-                                                      color: Colors.pink),
+                                                  style: TextStyles
+                                                      .kAlertDialogPositiveTextStyle,
                                                 ),
                                               ),
                                             ],
@@ -146,7 +149,7 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
                               icon: Icon(Icons.edit))
                         ]),
                       ),
-                      Container(height: 1, color: Colors.black)
+                      Container(height: 1, color: ColorStyles.kBlack)
                     ],
                   );
                 },

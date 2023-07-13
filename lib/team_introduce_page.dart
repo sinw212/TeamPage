@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import 'themes/colors.dart';
+import 'themes/textStyles.dart';
+
 class TeamIntroducePage extends StatelessWidget {
   const TeamIntroducePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
       backgroundColor: Color(0xff333333),
       appBar: AppBar(
         backgroundColor: Color(0xffFCD610),
+=======
+      backgroundColor: ColorStyles.kMainBackground,
+      appBar: AppBar(
+        backgroundColor: ColorStyles.kAppBar,
+        title: Text('팀 소개 페이지'),
+>>>>>>> 1871534931754f2a11210222591d51fda6ce9981
       ),
       body: Column(
         children: [
@@ -26,15 +36,12 @@ class TeamIntroducePage extends StatelessWidget {
             child: Text(
               "저희 FourFect 팀이 더 궁금하신가요?\n아래 링크를 클릭해보세요!",
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-              ),
+              style: TextStyles.kTeamIntroduceTitleTextStyle,
             ),
           ),
           Container(
             width: double.infinity,
-            color: Color(0xffeeeeee),
+            color: ColorStyles.kLightGrey,
             margin: EdgeInsets.all(8),
             padding: EdgeInsets.all(20),
             child: Column(
@@ -44,10 +51,7 @@ class TeamIntroducePage extends StatelessWidget {
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
                   child: Text(
                     "- 노션 주소",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyles.kQuestionTextStyle,
                   ),
                 ),
                 GestureDetector(
@@ -57,17 +61,14 @@ class TeamIntroducePage extends StatelessWidget {
                       MaterialPageRoute(
                         builder: (context) => WebViewPage(
                           url:
-                              "https://www.notion.so/1-4-67d4cd7fb9d94aa7a8b73fd9b93097b8?pvs=4",
+                              "https://lemon-conifer-031.notion.site/1-4-67d4cd7fb9d94aa7a8b73fd9b93097b8?pvs=4",
                         ),
                       ),
                     );
                   },
                   child: Text(
-                    "https://www.notion.so/1-4-67d4cd7fb9d94aa7a8b73fd9b93097b8?pvs=4",
-                    style: TextStyle(
-                      color: Colors.blue,
-                      decoration: TextDecoration.underline,
-                    ),
+                    "https://lemon-conifer-031.notion.site/1-4-67d4cd7fb9d94aa7a8b73fd9b93097b8?pvs=4",
+                    style: TextStyles.kWebViewTextStyle,
                   ),
                 ),
               ],
@@ -75,7 +76,7 @@ class TeamIntroducePage extends StatelessWidget {
           ),
           Container(
             width: double.infinity,
-            color: Color(0xffeeeeee),
+            color: ColorStyles.kLightGrey,
             margin: EdgeInsets.all(8),
             padding: EdgeInsets.all(20),
             child: Column(
@@ -85,10 +86,7 @@ class TeamIntroducePage extends StatelessWidget {
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
                   child: Text(
                     "- 깃허브 주소",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyles.kQuestionTextStyle,
                   ),
                 ),
                 GestureDetector(
@@ -104,10 +102,7 @@ class TeamIntroducePage extends StatelessWidget {
                   },
                   child: Text(
                     "https://github.com/Team4Page/TeamPage",
-                    style: TextStyle(
-                      color: Colors.blue,
-                      decoration: TextDecoration.underline,
-                    ),
+                    style: TextStyles.kWebViewTextStyle,
                   ),
                 ),
               ],
@@ -128,7 +123,7 @@ class WebViewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey,
+        backgroundColor: ColorStyles.kAppBar,
         title: Text(url),
       ),
       body: WebView(initialUrl: url),
