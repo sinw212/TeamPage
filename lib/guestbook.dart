@@ -59,7 +59,7 @@ class _CreateMemoPageState extends State<CreateMemoPage> {
                   String substanceS = substanceController.text;
                   String nameS = nameController.text;
                   String keyS = keyController.text;
-    
+
                   if (contentS.isNotEmpty &&
                       substanceS.isNotEmpty &&
                       nameS.isNotEmpty &&
