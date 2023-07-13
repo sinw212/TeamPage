@@ -157,6 +157,7 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
                                                           ),
                                                         ),
                                                       );
+                                                      keyController.clear();
                                                       if (memo
                                                           .content.isEmpty) {
                                                         bookService.deleteMemo(
