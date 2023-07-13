@@ -10,10 +10,18 @@ class TeamIntroducePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
+=======
+
+>>>>>>> dd19fb6e4d6b88f372a9f64527efe4cc8f13f3bf
       backgroundColor: ColorStyles.kMainBackground,
       appBar: AppBar(
         backgroundColor: ColorStyles.kAppBar,
         title: Text('팀 소개 페이지'),
+<<<<<<< HEAD
+=======
+
+>>>>>>> dd19fb6e4d6b88f372a9f64527efe4cc8f13f3bf
       ),
       body: Column(
         children: [

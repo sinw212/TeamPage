@@ -12,7 +12,11 @@ class PersonalPage extends StatelessWidget {
       "이충환": "assets/choonghwan_personal_img.jpg",
       "이다을": "assets/daeul_personal_img.jpg",
       "김진아": "assets/jina_personal_img.jpeg",
+<<<<<<< HEAD
       "이용준": "assets/IMG_7607.png",
+=======
+      "이용준": "assets/yongjun_personal_img.png",
+>>>>>>> dd19fb6e4d6b88f372a9f64527efe4cc8f13f3bf
       "김소현": "assets/sohyun_personal_img.jpg",
     };
     List<Map<String, dynamic>> personalList = [
@@ -59,6 +63,10 @@ class PersonalPage extends StatelessWidget {
       },
     ];
     return Scaffold(
+<<<<<<< HEAD
+=======
+      backgroundColor: ColorStyles.kMainBackground,
+>>>>>>> dd19fb6e4d6b88f372a9f64527efe4cc8f13f3bf
       appBar: AppBar(
         backgroundColor: ColorStyles.kAppBar,
         title: Text(
