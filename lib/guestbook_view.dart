@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'guestbook_service.dart';
+import 'themes/colors.dart';
 
 class ViewGuestBook extends StatelessWidget {
   ViewGuestBook({super.key, required this.index});
@@ -34,7 +35,10 @@ class ViewGuestBook extends StatelessWidget {
     nameController.text = book.name;
 
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: ColorStyles.kMainBackground,
+      appBar: AppBar(
+        backgroundColor: ColorStyles.kAppBar,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
