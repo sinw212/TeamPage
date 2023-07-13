@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'guestbook_service.dart';
@@ -32,6 +33,10 @@ class _CreateMemoPageState extends State<CreateMemoPage> {
 
   String keyValue = "";
 
+  void unfocusTextFields() {
+    FocusManager.instance.primaryFocus?.unfocus();
+  }
+
   @override
   Widget build(BuildContext context) {
     BookService bookService = context.read<BookService>();
@@ -42,9 +47,7 @@ class _CreateMemoPageState extends State<CreateMemoPage> {
     nameController.text = book.name;
 
     return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-      },
+      onTap: unfocusTextFields,
       child: Scaffold(
         backgroundColor: ColorStyles.kMainBackground,
         appBar: AppBar(
