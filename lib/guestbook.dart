@@ -42,6 +42,7 @@ class _CreateMemoPageState extends State<CreateMemoPage> {
     nameController.text = book.name;
 
     return Scaffold(
+      backgroundColor: ColorStyles.kMainBackground,
       appBar: AppBar(
         backgroundColor: ColorStyles.kAppBar,
         actions: [
@@ -71,6 +72,8 @@ class _CreateMemoPageState extends State<CreateMemoPage> {
                         title: Text("모든 내용을 입력해야 저장, 수정이 가능합니다."),
                         actions: [
                           TextButton(
+                            style: TextButton.styleFrom(
+                                foregroundColor: Colors.grey),
                             onPressed: () {
                               Navigator.pop(context);
                             },
