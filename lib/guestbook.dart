@@ -41,113 +41,118 @@ class _CreateMemoPageState extends State<CreateMemoPage> {
     substanceController.text = book.substance;
     nameController.text = book.name;
 
-    return Scaffold(
-      backgroundColor: ColorStyles.kMainBackground,
-      appBar: AppBar(
-        backgroundColor: ColorStyles.kAppBar,
-        actions: [
-          TextButton(
-              onPressed: () {
-                String contentS = contentController.text;
-                String substanceS = substanceController.text;
-                String nameS = nameController.text;
-                String keyS = keyController.text;
-
-                if (contentS.isNotEmpty &&
-                    substanceS.isNotEmpty &&
-                    nameS.isNotEmpty &&
-                    keyS.isNotEmpty) {
-                  bookService.updateBook(
-                      index: widget.index,
-                      content: contentS,
-                      substance: substanceS,
-                      name: nameS,
-                      key: keyS);
-                  Navigator.pop(context);
-                } else {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: Text("모든 내용을 입력해야 저장, 수정이 가능합니다."),
-                        actions: [
-                          TextButton(
-                            style: TextButton.styleFrom(
-                                foregroundColor: Colors.grey),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: Text("확인"),
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                }
-              },
-              child: Text(
-                widget.isModify ? "수정" : "저장",
-                style: TextStyles.kWhiteTextStyle,
-              ))
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              TextField(
-                  controller: contentController,
-                  decoration: const InputDecoration(
-                      hintText: "제목을 입력하세요",
-                      border: InputBorder.none,
-                      filled: true,
-                      fillColor: ColorStyles.kLightGrey),
-                  autofocus: false,
-                  maxLines: 1,
-                  expands: false,
-                  keyboardType: TextInputType.multiline,
-                  onChanged: (value) {}),
-              SizedBox(height: 20),
-              TextField(
-                  controller: substanceController,
-                  decoration: const InputDecoration(
-                      hintText: "내용을 입력하세요",
-                      border: InputBorder.none,
-                      filled: true,
-                      fillColor: ColorStyles.kLightGrey),
-                  autofocus: false,
-                  maxLines: 10,
-                  expands: false,
-                  keyboardType: TextInputType.multiline,
-                  onChanged: (value) {}),
-              SizedBox(height: 20),
-              TextField(
-                  controller: nameController,
-                  decoration: const InputDecoration(
-                      hintText: "이름",
-                      border: InputBorder.none,
-                      filled: true,
-                      fillColor: ColorStyles.kLightGrey),
-                  autofocus: false,
-                  maxLines: 1,
-                  expands: false,
-                  keyboardType: TextInputType.multiline,
-                  onChanged: (value) {}),
-              SizedBox(height: 20),
-              TextField(
-                  controller: keyController,
-                  decoration: const InputDecoration(
-                      hintText: "비밀번호",
-                      border: InputBorder.none,
-                      filled: true,
-                      fillColor: ColorStyles.kLightGrey),
-                  autofocus: false,
-                  maxLines: 1,
-                  expands: false,
-                  keyboardType: TextInputType.multiline,
-                  onChanged: (value) {}),
-            ],
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        backgroundColor: ColorStyles.kMainBackground,
+        appBar: AppBar(
+          backgroundColor: ColorStyles.kAppBar,
+          actions: [
+            TextButton(
+                onPressed: () {
+                  String contentS = contentController.text;
+                  String substanceS = substanceController.text;
+                  String nameS = nameController.text;
+                  String keyS = keyController.text;
+    
+                  if (contentS.isNotEmpty &&
+                      substanceS.isNotEmpty &&
+                      nameS.isNotEmpty &&
+                      keyS.isNotEmpty) {
+                    bookService.updateBook(
+                        index: widget.index,
+                        content: contentS,
+                        substance: substanceS,
+                        name: nameS,
+                        key: keyS);
+                    Navigator.pop(context);
+                  } else {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text("모든 내용을 입력해야 저장, 수정이 가능합니다."),
+                          actions: [
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                  foregroundColor: Colors.grey),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text("확인"),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
+                },
+                child: Text(
+                  widget.isModify ? "수정" : "저장",
+                  style: TextStyles.kWhiteTextStyle,
+                ))
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                TextField(
+                    controller: contentController,
+                    decoration: const InputDecoration(
+                        hintText: "제목을 입력하세요",
+                        border: InputBorder.none,
+                        filled: true,
+                        fillColor: ColorStyles.kLightGrey),
+                    autofocus: false,
+                    maxLines: 1,
+                    expands: false,
+                    keyboardType: TextInputType.multiline,
+                    onChanged: (value) {}),
+                SizedBox(height: 20),
+                TextField(
+                    controller: substanceController,
+                    decoration: const InputDecoration(
+                        hintText: "내용을 입력하세요",
+                        border: InputBorder.none,
+                        filled: true,
+                        fillColor: ColorStyles.kLightGrey),
+                    autofocus: false,
+                    maxLines: 10,
+                    expands: false,
+                    keyboardType: TextInputType.multiline,
+                    onChanged: (value) {}),
+                SizedBox(height: 20),
+                TextField(
+                    controller: nameController,
+                    decoration: const InputDecoration(
+                        hintText: "이름",
+                        border: InputBorder.none,
+                        filled: true,
+                        fillColor: ColorStyles.kLightGrey),
+                    autofocus: false,
+                    maxLines: 1,
+                    expands: false,
+                    keyboardType: TextInputType.multiline,
+                    onChanged: (value) {}),
+                SizedBox(height: 20),
+                TextField(
+                    controller: keyController,
+                    decoration: const InputDecoration(
+                        hintText: "비밀번호",
+                        border: InputBorder.none,
+                        filled: true,
+                        fillColor: ColorStyles.kLightGrey),
+                    autofocus: false,
+                    maxLines: 1,
+                    expands: false,
+                    keyboardType: TextInputType.multiline,
+                    onChanged: (value) {}),
+              ],
+            ),
           ),
         ),
       ),
