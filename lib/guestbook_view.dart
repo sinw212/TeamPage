@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'guestbook_service.dart';
 import 'themes/colors.dart';
 
+// ignore: must_be_immutable
 class ViewGuestBook extends StatelessWidget {
   ViewGuestBook({super.key, required this.index});
 
