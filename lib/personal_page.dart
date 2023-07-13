@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 import 'themes/colors.dart';
 import 'themes/textStyles.dart';
@@ -11,13 +10,6 @@ class PersonalPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, String> images = {
-      "이충환": "assets/choonghwan_personal_img.jpg",
-      "이다을": "assets/daeul_personal_img.jpg",
-      "김진아": "assets/jina_personal_img.jpeg",
-      "이용준": "assets/IMG_7607.png",
-      "김소현": "assets/sohyun_personal_img.jpg",
-    };
     List<Map<String, dynamic>> personalList = [
       {
         "question": "- 나에 대한 설명 및 MBTI",
@@ -29,13 +21,13 @@ class PersonalPage extends StatelessWidget {
         "이용준":
             "저의 MBTI는 'INTJ'입니다 사람들이랑 어울리는 걸 좋아해서 E라고 생각한 적 있는데 낯 가림이 심한 걸 보니 I가 맞는 것 같아요",
         "김소현":
-            "학부생 시절만 해도 ESFJ였는데 입사를 하고서 ISFJ로 바뀌었습니다. 검사를 해보면 90% 이상의 극S와 극J가 나오고 E와I, T와F는 4:6정도 비율이 나옵니다. ISFJ가 I중에 가장 E이고, F중에 가장 T라고 하던데 어느정도는 일치한다고 느끼는 것 같습니다.",
+            "제 MBTI는 ISFJ입니다.\n학부생 시절만 해도 ESFJ였는데 입사를 하고서 성격이 바뀌었습니다. 이후로도 꽤 여러번 재검사를 해봤는데 결국 E로 돌아오지 못했답니다.. 검사를 해보면 90% 이상의 극S와 극J가 나오고 E와I, T와F는 4:6정도 비율이 나옵니다. ISFJ가 I중에 가장 E이고, F중에 가장 T라고 하던데 어느정도는 일치한다고 느끼는 것 같습니다.",
       },
       {
         "question": "- 객관적인 장점",
         "이충환": "융통성 없다는 이야기도 많이 듣지만 정해진 규칙을 잘 따르고 시간 약속을 잘 지키는 것이 장점인것 같습니다.",
         "이다을": "해야겠다고 마음먹은 일이라면 밤을 새서라도 끝을봐야 직성이 풀리는 성격인데 장점이라고 해도 되겠죠?ㅎ..",
-        "김진아": "모르는 것이 생기더라도 끝까지 노력하는 것입니다.",
+        "김진아": "모르는 것이 생기더라도 끝까지 노력하는 것이 저의 장점입니다.",
         "이용준": "객관적으로 봤을 때 저의 장점은 감정적이지 않은 것입니다.",
         "김소현":
             "필기노트만 보면 전교1등이라는 얘기를 숱하게 들을만큼 정리를 잘하는게 제 장점인 것 같습니다. 이 장점을 문서정리에 잘 녹여낼 수 있는 것 같습니다.",
@@ -54,15 +46,16 @@ class PersonalPage extends StatelessWidget {
       },
       {
         "question": "- 개인 블로그 주소",
-        "이충환": "https://choongplog.tistory.com/",
-        "이다을": "https://velog.io/@ouowinnie",
-        "김진아": "https://velog.io/@jxxn_a",
-        "이용준": "-",
+        "이충환": "choongplog.tistory.com",
+        "이다을": "아직없음",
+        "김진아": "https://velog.io/@jxxn_a 입니다.",
+        "이용준": "개인 블로그는 운영하지 않습니다.. SNS도 안해요",
         "김소현": "https://sinw212.tistory.com/",
       },
     ];
 
     return Scaffold(
+      backgroundColor: Color(0xff333333),
       appBar: AppBar(
         backgroundColor: ColorStyles.kAppBar,
         title: Text(
@@ -72,6 +65,7 @@ class PersonalPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 8.0),
+
         child: Column(
           children: [
             Padding(
@@ -134,16 +128,20 @@ class PersonalPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                  );
-                },
+                  ),
+                  Text(
+                    personalList[index][name],
+                  ),
+                ],
               ),
-            ),
-          ],
+            );
+          },
         ),
       ),
     );
   }
 }
+
 
 class WebViewPage extends StatelessWidget {
   WebViewPage({super.key, required this.url});
@@ -161,3 +159,4 @@ class WebViewPage extends StatelessWidget {
     );
   }
 }
+
