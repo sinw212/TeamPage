@@ -157,6 +157,7 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
                                                         bookService
                                                             .checkPassword(
                                                                 index: index)) {
+                                                      Navigator.pop(context);
                                                       Navigator.push(
                                                         context,
                                                         MaterialPageRoute(
