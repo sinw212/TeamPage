@@ -57,10 +57,10 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/IMG_7607.png
     - assets/choonghwan_personal_img.jpg
     - assets/daeul_personal_img.jpg
     - assets/jina_personal_img.jpeg
+    - assets/yongjun_personal_img.png
     - assets/sohyun_personal_img.jpg
     - assets/logo_fourfect.png
 
