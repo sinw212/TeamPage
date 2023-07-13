@@ -8,7 +8,9 @@ class TeamIntroducePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff333333),
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Color(0xffFCD610),
+      ),
       body: Column(
         children: [
           Padding(

@@ -2,11 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:team_page/guestbook_service.dart';
-<<<<<<< HEAD
-=======
 import 'package:team_page/guestbook_view.dart';
 
->>>>>>> eb1f8887a6d69bcb7cb6581e86990d68719df8c1
 import 'guestbook.dart';
 
 class VisitorMemoList extends StatefulWidget {
