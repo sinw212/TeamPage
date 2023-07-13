@@ -80,6 +80,12 @@
 <div align=left><h1>💻 Stacks</h1></div>
 <div align=left>
 <img src="https://img.shields.io/badge/Flutter-02569B.svg?style=for-the-badge&logo=Flutter&logoColor=white">
-<img src="https://img.shields.io/badge/Provider-02269B.svg?style=for-the-badge&logoColor=white">
-<img src="https://img.shields.io/badge/Shared Preference-02269B.svg?style=for-the-badge&logoColor=white">
+<img src="https://img.shields.io/badge/dart-02569B.svg?style=for-the-badge&logo=dart&logoColor=white">
+<img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=Visual Studio Code&logoColor=white">
+<img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white">
+<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white">
+<img src="https://img.shields.io/badge/Provider-666666.svg?style=for-the-badge&logoColor=white">
+<img src="https://img.shields.io/badge/Shared Preference-666666.svg?style=for-the-badge&logoColor=white">
+<img src="https://img.shields.io/badge/webview-666666.svg?style=for-the-badge&logoColor=white">
+<img src="https://img.shields.io/badge/splash-666666.svg?style=for-the-badge&logoColor=white">
 </div>
