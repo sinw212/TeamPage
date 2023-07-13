@@ -59,7 +59,7 @@ class _CreateMemoPageState extends State<CreateMemoPage> {
                   String substanceS = substanceController.text;
                   String nameS = nameController.text;
                   String keyS = keyController.text;
-    
+
                   if (contentS.isNotEmpty &&
                       substanceS.isNotEmpty &&
                       nameS.isNotEmpty &&
@@ -70,6 +70,7 @@ class _CreateMemoPageState extends State<CreateMemoPage> {
                         substance: substanceS,
                         name: nameS,
                         key: keyS);
+                    Navigator.pop(context);
                     Navigator.pop(context);
                   } else {
                     showDialog(

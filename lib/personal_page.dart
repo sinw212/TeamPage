@@ -142,6 +142,7 @@ class PersonalPage extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class WebViewPage extends StatelessWidget {
   WebViewPage({super.key, required this.url});
   String url;
