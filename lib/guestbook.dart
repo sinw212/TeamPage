@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 
 import 'guestbook_service.dart';
 import 'themes/colors.dart';
-import 'themes/text_styles.dart';
 
 class CreateMemoPage extends StatefulWidget {
   CreateMemoPage({super.key, required this.index, required this.isModify});
@@ -17,19 +16,13 @@ class CreateMemoPage extends StatefulWidget {
 
 class _CreateMemoPageState extends State<CreateMemoPage> {
   TextEditingController contentController = TextEditingController();
-
   TextEditingController substanceController = TextEditingController();
-
   TextEditingController nameController = TextEditingController();
-
   TextEditingController keyController = TextEditingController();
 
   String contentValue = "";
-
   String substanceValue = "";
-
   String nameValue = "";
-
   String keyValue = "";
 
   void unfocusTextFields() {
@@ -93,7 +86,7 @@ class _CreateMemoPageState extends State<CreateMemoPage> {
                 },
                 child: Text(
                   widget.isModify ? "수정" : "저장",
-                  style: TextStyles.kWhiteTextStyle,
+                  style: TextStyle(color: Colors.white),
                 ))
           ],
         ),
@@ -102,62 +95,34 @@ class _CreateMemoPageState extends State<CreateMemoPage> {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                TextField(
-                    controller: contentController,
-                    decoration: const InputDecoration(
-                        hintText: "제목을 입력하세요",
-                        border: InputBorder.none,
-                        filled: true,
-                        fillColor: ColorStyles.kLightGrey),
-                    autofocus: false,
-                    maxLines: 1,
-                    expands: false,
-                    keyboardType: TextInputType.multiline,
-                    onChanged: (value) {}),
+                guestBookItem(contentController, "제목을 입력하세요", 1),
                 SizedBox(height: 20),
-                TextField(
-                    controller: substanceController,
-                    decoration: const InputDecoration(
-                        hintText: "내용을 입력하세요",
-                        border: InputBorder.none,
-                        filled: true,
-                        fillColor: ColorStyles.kLightGrey),
-                    autofocus: false,
-                    maxLines: 10,
-                    expands: false,
-                    keyboardType: TextInputType.multiline,
-                    onChanged: (value) {}),
+                guestBookItem(substanceController, "내용을 입력하세요", 10),
                 SizedBox(height: 20),
-                TextField(
-                    controller: nameController,
-                    decoration: const InputDecoration(
-                        hintText: "이름",
-                        border: InputBorder.none,
-                        filled: true,
-                        fillColor: ColorStyles.kLightGrey),
-                    autofocus: false,
-                    maxLines: 1,
-                    expands: false,
-                    keyboardType: TextInputType.multiline,
-                    onChanged: (value) {}),
+                guestBookItem(nameController, "이름", 1),
                 SizedBox(height: 20),
-                TextField(
-                    controller: keyController,
-                    decoration: const InputDecoration(
-                        hintText: "비밀번호",
-                        border: InputBorder.none,
-                        filled: true,
-                        fillColor: ColorStyles.kLightGrey),
-                    autofocus: false,
-                    maxLines: 1,
-                    expands: false,
-                    keyboardType: TextInputType.multiline,
-                    onChanged: (value) {}),
+                guestBookItem(keyController, "비밀번호", 1),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  TextField guestBookItem(
+      TextEditingController controller, String hintText, int maxLines) {
+    return TextField(
+        controller: controller,
+        decoration: InputDecoration(
+            hintText: hintText,
+            border: InputBorder.none,
+            filled: true,
+            fillColor: ColorStyles.kLightGrey),
+        autofocus: false,
+        maxLines: maxLines,
+        expands: false,
+        keyboardType: TextInputType.multiline,
+        onChanged: (value) {});
   }
 }

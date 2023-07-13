@@ -10,19 +10,13 @@ class ViewGuestBook extends StatelessWidget {
   final int index;
 
   TextEditingController contentController = TextEditingController();
-
   TextEditingController substanceController = TextEditingController();
-
   TextEditingController nameController = TextEditingController();
-
   TextEditingController keyController = TextEditingController();
 
   String contentValue = "";
-
   String substanceValue = "";
-
   String nameValue = "";
-
   String keyValue = "";
 
   @override
@@ -44,52 +38,32 @@ class ViewGuestBook extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: Column(
             children: [
-              TextField(
-                  controller: contentController,
-                  decoration: const InputDecoration(
-                      hintText: "제목을 입력하세요",
-                      border: InputBorder.none,
-                      filled: true,
-                      fillColor: Color(0xFFEEEEEE)),
-                  autofocus: false,
-                  maxLines: 1,
-                  expands: false,
-                  enabled: false,
-                  keyboardType: TextInputType.multiline,
-                  onChanged: (value) {}),
+              guestBookDetailItem(contentController, "제목을 입력하세요", 1),
               SizedBox(height: 20),
-              TextField(
-                  controller: substanceController,
-                  decoration: const InputDecoration(
-                      hintText: "내용을 입력하세요",
-                      border: InputBorder.none,
-                      filled: true,
-                      fillColor: Color(0xFFEEEEEE)),
-                  autofocus: false,
-                  maxLines: 10,
-                  expands: false,
-                  enabled: false,
-                  keyboardType: TextInputType.multiline,
-                  onChanged: (value) {}),
+              guestBookDetailItem(substanceController, "내용을 입력하세요", 10),
               SizedBox(height: 20),
-              TextField(
-                  controller: nameController,
-                  decoration: const InputDecoration(
-                      hintText: "이름",
-                      border: InputBorder.none,
-                      filled: true,
-                      fillColor: Color(0xFFEEEEEE)),
-                  autofocus: false,
-                  maxLines: 1,
-                  expands: false,
-                  enabled: false,
-                  keyboardType: TextInputType.multiline,
-                  onChanged: (value) {}),
-              SizedBox(height: 20),
+              guestBookDetailItem(nameController, "이름", 1),
             ],
           ),
         ),
       ),
     );
+  }
+
+  TextField guestBookDetailItem(
+      TextEditingController controller, String hintText, int maxLines) {
+    return TextField(
+        controller: controller,
+        decoration: InputDecoration(
+            hintText: hintText,
+            border: InputBorder.none,
+            filled: true,
+            fillColor: Color(0xFFEEEEEE)),
+        autofocus: false,
+        maxLines: maxLines,
+        expands: false,
+        enabled: false,
+        keyboardType: TextInputType.multiline,
+        onChanged: (value) {});
   }
 }

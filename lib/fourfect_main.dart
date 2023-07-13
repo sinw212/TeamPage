@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:team_page/introduce_personal.dart';
-import 'package:team_page/guestbook_list.dart';
+import 'introduce_personal.dart';
+import 'guestbook_list.dart';
 import 'introduce_team.dart';
 import 'themes/colors.dart';
-import 'themes/textStyles.dart';
+import 'themes/text_styles.dart';
 
 class FourfectMain extends StatelessWidget {
   FourfectMain({super.key}); // 생성자
@@ -32,13 +32,13 @@ class FourfectMain extends StatelessWidget {
                       ),
                     ),
                     Text("안녕하세요 Fourfect 입니다 :)",
-                        style: TextStyles.kTeamPageTitleTextStyle),
+                        style: TextStyles.kMainTitleTextStyle),
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0),
                       child: Text(
                         "숫자 4와 perfect의 뜻을 합친 이름으로,\n우리들의 창의적인 사고와 실행력으로 완벽한\n결과물을 낼 수 있도록 최선을 다하겠습니다!",
                         textAlign: TextAlign.center,
-                        style: TextStyles.kTeamPageNormalTextStyle,
+                        style: TextStyles.kMainNormalTextStyle,
                       ),
                     ),
                   ],
@@ -49,68 +49,8 @@ class FourfectMain extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => TeamIntroducePage(),
-                            ),
-                          );
-                        },
-                        style: TextButton.styleFrom(
-                            backgroundColor:
-                                ColorStyles.kDarkGrey.withOpacity(0.5),
-                            foregroundColor: ColorStyles.kWhite,
-                            minimumSize: Size(100, 60),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.zero)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
-                              child: Icon(Icons.home),
-                            ),
-                            SizedBox(
-                              child: Text('팀 페이지'),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => VisitorMemoList(),
-                            ),
-                          );
-                        },
-                        style: TextButton.styleFrom(
-                            backgroundColor:
-                                ColorStyles.kDarkGrey.withOpacity(0.5),
-                            foregroundColor: ColorStyles.kWhite,
-                            minimumSize: Size(100, 60),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.zero)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
-                              child: Icon(Icons.mode),
-                            ),
-                            SizedBox(
-                              child: Text('방명록 남기기'),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    featureButton(context, 0, "팀 페이지"),
+                    featureButton(context, 1, "방명록 남기기"),
                   ],
                 ),
               ),
@@ -156,6 +96,39 @@ class FourfectMain extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Expanded featureButton(BuildContext context, int num, String pageText) {
+    //num: 0 - 팀 페이지 버튼, 1 - 방명록 작성하기 버튼
+    return Expanded(
+      child: TextButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => num == 0 ? TeamIntroducePage() : GuestbookList(),
+            ),
+          );
+        },
+        style: TextButton.styleFrom(
+            backgroundColor: ColorStyles.kDarkGrey.withOpacity(0.5),
+            foregroundColor: Colors.white,
+            minimumSize: Size(100, 60),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+              child: Icon(Icons.home),
+            ),
+            SizedBox(
+              child: Text(pageText),
+            ),
+          ],
         ),
       ),
     );

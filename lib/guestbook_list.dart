@@ -4,15 +4,14 @@ import 'guestbook_service.dart';
 import 'guestbook_detail.dart';
 import 'guestbook.dart';
 import 'themes/colors.dart';
-import 'themes/text_styles.dart';
 
-class VisitorMemoList extends StatefulWidget {
-  const VisitorMemoList({super.key});
+class GuestbookList extends StatefulWidget {
+  const GuestbookList({super.key});
   @override
-  State<VisitorMemoList> createState() => _VisitorMemoListState();
+  State<GuestbookList> createState() => _GuestbookListState();
 }
 
-class _VisitorMemoListState extends State<VisitorMemoList> {
+class _GuestbookListState extends State<GuestbookList> {
   TextEditingController keyController = TextEditingController();
 
   @override
@@ -50,7 +49,7 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
                             overflow: TextOverflow.ellipsis,
                           ),
                           subtitle: Text(
-                            "작성자 : " + memo.name,
+                            "작성자 : ${memo.name}",
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -64,135 +63,15 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
                               ),
                             );
                           },
-                          trailing: Wrap(children: [
-                            Container(width: 10),
-                            IconButton(
-                                onPressed: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return AlertDialog(
-                                        title: Text("삭제를 원하실 경우 비밀번호를 입력해주세요."),
-                                        actions: [
-                                          TextField(controller: keyController),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              SizedBox(height: 50),
-                                              TextButton(
-                                                style: TextButton.styleFrom(
-                                                    foregroundColor:
-                                                        Colors.grey),
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                  keyController.clear();
-                                                },
-                                                child: Text("취소"),
-                                              ),
-                                              TextButton(
-                                                onPressed: () {
-                                                  if (keyController.text ==
-                                                          bookService
-                                                              .checkPassword(
-                                                                  index:
-                                                                      index) ||
-                                                      keyController.text ==
-                                                          "12345") {
-                                                    bookService.deleteMemo(
-                                                        index: index);
-                                                    Navigator.pop(context);
-                                                    keyController.clear();
-                                                  } else {
-                                                    showWrongPasswordDialog(
-                                                        context, bookService);
-                                                    keyController.clear();
-                                                  }
-                                                },
-                                                child: Text(
-                                                  "확인",
-                                                  style: TextStyles
-                                                      .kAlertDialogPositiveTextStyle,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
-                                },
-                                icon: Icon(Icons.delete)),
-                            IconButton(
-                                onPressed: () async {
-                                  showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return AlertDialog(
-                                          title:
-                                              Text("수정을 원하실 경우 비밀번호를 입력해주세요."),
-                                          actions: [
-                                            TextField(
-                                                controller: keyController),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                SizedBox(height: 50),
-                                                TextButton(
-                                                  style: TextButton.styleFrom(
-                                                      foregroundColor:
-                                                          Colors.grey),
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                    keyController.clear();
-                                                  },
-                                                  child: Text("취소"),
-                                                ),
-                                                TextButton(
-                                                  onPressed: () {
-                                                    if (keyController.text ==
-                                                        bookService
-                                                            .checkPassword(
-                                                                index: index)) {
-                                                      Navigator.pop(context);
-                                                      Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (_) =>
-                                                              CreateMemoPage(
-                                                            index: index,
-                                                            isModify: true,
-                                                          ),
-                                                        ),
-                                                      );
-                                                      keyController.clear();
-                                                      if (memo
-                                                          .content.isEmpty) {
-                                                        bookService.deleteMemo(
-                                                            index: index);
-                                                        keyController.clear();
-                                                      }
-                                                    } else {
-                                                      showWrongPasswordDialog(
-                                                          context, bookService);
-                                                      keyController.clear();
-                                                    }
-                                                  },
-                                                  child: Text(
-                                                    "확인",
-                                                    style: TextStyles
-                                                        .kAlertDialogPositiveTextStyle,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        );
-                                      });
-                                },
-                                icon: Icon(Icons.edit)),
-                          ]),
+                          trailing: Wrap(
+                            children: [
+                              Container(width: 10),
+                              updateDeleteAlertDialog(
+                                  context, bookService, index, memo, 0),
+                              updateDeleteAlertDialog(
+                                  context, bookService, index, memo, 1),
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -215,12 +94,88 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
               ),
             );
             if (bookList[bookService.bookList.length - 1].content.isEmpty) {
-              bookService.deleteMemo(index: bookList.length - 1);
+              bookService.deleteBook(index: bookList.length - 1);
             }
           },
         ),
       );
     });
+  }
+
+  IconButton updateDeleteAlertDialog(BuildContext context,
+      BookService bookService, int index, Book memo, int num) {
+    //num: 0 - 삭제 아이콘, 1 - 수정 아이콘
+    return IconButton(
+      onPressed: () {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text("${num == 0 ? "삭제를" : "수정을"} 원하실 경우 비밀번호를 입력해주세요."),
+              actions: [
+                TextField(controller: keyController),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 50),
+                    TextButton(
+                      style: TextButton.styleFrom(foregroundColor: Colors.grey),
+                      onPressed: () {
+                        Navigator.pop(context);
+                        keyController.clear();
+                      },
+                      child: Text("취소"),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        if (keyController.text ==
+                            bookService.checkPassword(index: index)) {
+                          if (num == 0) {
+                            //삭제버튼 누른경우
+                            bookService.deleteBook(index: index);
+                          }
+                          Navigator.pop(context);
+                          if (num == 1) {
+                            //수정버튼 누른경우
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => CreateMemoPage(
+                                  index: index,
+                                  isModify: true,
+                                ),
+                              ),
+                            );
+                          }
+                          keyController.clear();
+                          if (num == 1) {
+                            //수정버튼 누른경우
+                            if (memo.content.isEmpty) {
+                              bookService.deleteBook(index: index);
+                              keyController.clear();
+                            }
+                          }
+                        } else {
+                          showWrongPasswordDialog(context, bookService);
+                          keyController.clear();
+                        }
+                      },
+                      child: Text(
+                        "확인",
+                        style: TextStyle(
+                          color: Colors.pink,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            );
+          },
+        );
+      },
+      icon: Icon(num == 0 ? Icons.delete : Icons.edit),
+    );
   }
 }
 
