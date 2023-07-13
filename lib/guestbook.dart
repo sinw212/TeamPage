@@ -71,6 +71,7 @@ class _CreateMemoPageState extends State<CreateMemoPage> {
                         name: nameS,
                         key: keyS);
                     Navigator.pop(context);
+                    Navigator.pop(context);
                   } else {
                     showDialog(
                       context: context,
