@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:team_page/personal_page.dart';
 import 'package:team_page/visitor_memo_list.dart';
-
 import 'team_introduce_page.dart';
 import 'themes/colors.dart';
 import 'themes/textStyles.dart';
-
 class TeamPage extends StatelessWidget {
   TeamPage({super.key}); // 생성자
   final name = ['이충환', '이다을', '김진아', '이용준', '김소현'];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

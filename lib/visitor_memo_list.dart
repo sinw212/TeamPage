@@ -10,7 +10,6 @@ import 'themes/textStyles.dart';
 
 class VisitorMemoList extends StatefulWidget {
   const VisitorMemoList({super.key});
-
   @override
   State<VisitorMemoList> createState() => _VisitorMemoListState();
 }
@@ -22,7 +21,6 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
   Widget build(BuildContext context) {
     return Consumer<BookService>(builder: (context, bookService, child) {
       List<Book> bookList = bookService.bookList;
-
       return Scaffold(
         appBar: AppBar(
           backgroundColor: ColorStyles.kAppBar,

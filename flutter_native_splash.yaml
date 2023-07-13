@@ -1,0 +1,7 @@
+flutter_native_splash:
+  color: "333333"
+  image: assets/logo_fourfect_splash.png
+  android_12: 
+    image: assets/logo_fourfect_splash.png
+  android: true
+  ios: true

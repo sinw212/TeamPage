@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-
 import 'themes/colors.dart';
 import 'themes/textStyles.dart';
 
 class PersonalPage extends StatelessWidget {
   final String name;
-
   const PersonalPage(this.name, {super.key});
-
   @override
   Widget build(BuildContext context) {
     Map<String, String> images = {
@@ -61,7 +58,6 @@ class PersonalPage extends StatelessWidget {
         "김소현": "https://sinw212.tistory.com/",
       },
     ];
-
     return Scaffold(
       backgroundColor: ColorStyles.kMainBackground,
       appBar: AppBar(
@@ -148,9 +144,7 @@ class PersonalPage extends StatelessWidget {
 
 class WebViewPage extends StatelessWidget {
   WebViewPage({super.key, required this.url});
-
   String url;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
