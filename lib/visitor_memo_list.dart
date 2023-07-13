@@ -51,6 +51,11 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
+                          subtitle: Text(
+                            "작성자 : " + memo.name,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                           onTap: () async {
                             await Navigator.push(
                               context,
@@ -62,6 +67,7 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
                             );
                           },
                           trailing: Wrap(children: [
+                            Container(width: 10),
                             IconButton(
                                 onPressed: () {
                                   showDialog(
@@ -182,7 +188,7 @@ class _VisitorMemoListState extends State<VisitorMemoList> {
                                         );
                                       });
                                 },
-                                icon: Icon(Icons.edit))
+                                icon: Icon(Icons.edit)),
                           ]),
                         ),
                       ),

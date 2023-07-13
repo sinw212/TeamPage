@@ -120,7 +120,10 @@ class WebViewPage extends StatelessWidget {
         backgroundColor: ColorStyles.kAppBar,
         title: Text(url),
       ),
-      body: WebView(initialUrl: url),
+      body: WebView(
+        initialUrl: url,
+        javascriptMode: JavascriptMode.unrestricted,
+      ),
     );
   }
 }
