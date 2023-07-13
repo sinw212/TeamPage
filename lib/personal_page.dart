@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'themes/colors.dart';
+import 'themes/textStyles.dart';
+
 class PersonalPage extends StatelessWidget {
   final String name;
 
@@ -54,35 +57,76 @@ class PersonalPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xff333333),
       appBar: AppBar(
-        backgroundColor: Color(0xffFCD610),
+        backgroundColor: ColorStyles.kAppBar,
         title: Text(
           "개인 프로필 ($name)",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyles.kBoldTextStyle,
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 8.0),
-        child: ListView.builder(
-          itemCount: personalList.length,
-          itemBuilder: (context, index) {
-            return Container(
-              width: double.infinity,
-              color: Color(0xffeeeeee),
-              margin: EdgeInsets.fromLTRB(8, 4, 8, 8),
-              padding: EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
-                    child: Text(
-                      personalList[index]['question'],
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(100.0),
+                child: Image.asset(
+                  images[name]!,
+                  width: 200,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: personalList.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    width: double.infinity,
+                    color: ColorStyles.kLightGrey,
+                    margin: EdgeInsets.fromLTRB(8, 4, 8, 8),
+                    padding: EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                          child: Text(
+                            personalList[index]['question'],
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            if (personalList[index][name].contains("https")) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => WebViewPage(
+                                    url: personalList[index][name],
+                                  ),
+                                ),
+                              );
+                            }
+                          },
+                          child: (personalList[index][name].contains("https"))
+                              ? Text(
+                                  personalList[index][name],
+                                  style: TextStyle(
+                                    color: Colors.blue,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                )
+                              : Text(
+                                  personalList[index][name],
+                                ),
+                        ),
+                      ],
                     ),
                   ),
                   Text(
@@ -97,3 +141,22 @@ class PersonalPage extends StatelessWidget {
     );
   }
 }
+
+
+class WebViewPage extends StatelessWidget {
+  WebViewPage({super.key, required this.url});
+
+  String url;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ColorStyles.kAppBar,
+        title: Text(url),
+      ),
+      body: WebView(initialUrl: url),
+    );
+  }
+}
+
