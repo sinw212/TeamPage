@@ -1,12 +1,10 @@
 # 😏 Team Fourfect
-
 ![team_main_img](https://github.com/Team4Page/TeamPage/assets/139089298/0533c0f3-4313-4385-a50f-ff78fe7a6556)
 
 ---
 <div><h1>🔗 Team Introduce</h1></div>
 
-#### [Team Notion] <https://www.notion.so/1-4-67d4cd7fb9d94aa7a8b73fd9b93097b8?pvs=4>
-#### [Team Github] <https://github.com/Team4Page/TeamPage.git>
+### [Team Notion] <https://www.notion.so/1-4-67d4cd7fb9d94aa7a8b73fd9b93097b8?pvs=4>
 
 <br>
 
@@ -39,41 +37,9 @@
 - 방명록을 Create(생성), Read(읽기), Update(갱신), Delete(삭제)할 수 있습니다.
 
 
-### ✖ 페이지 소개 ✖
-<details>
-<summary>메인페이지</summary>
-
-![project_intro01](https://github.com/Team4Page/TeamPage/assets/139089298/09cc6c99-688f-4054-8e73-55e7777192bf)
-
-- `팀 페이지`,  `방명록 남기기`,  `개인 페이지`로 이동 가능합니다.
-</details>
-
-<details>
-<summary>팀페이지</summary>
-
-![project_intro02](https://github.com/Team4Page/TeamPage/assets/139089298/6098f79a-d21a-4788-bb50-e4e09cc93bd1)
-
-- `팀 노션`,  `팀 깃허브`로 이동 가능합니다.
-</details>
-
-<details>
-<summary>개인페이지</summary>
-
-![project_intro03](https://github.com/Team4Page/TeamPage/assets/139089298/1e55eaa0-6d9e-4edf-8aca-c6526e0203ae)
-
-- `개인프로필`을 열람할 수 있습니다.
-</details>
-
-<details>
-<summary>방명록 페이지</summary>
-
+### 구현화면
+![8TeamPage](https://github.com/sinw212/HotelReservation/assets/53486320/99318b80-5e21-42cf-8843-40ab7cf14aa3)
 ![project_intro03](https://github.com/Team4Page/TeamPage/assets/139089298/b759640a-6709-422c-8589-8207617cca71)
-
-- `방명록`을 작성할 수 있습니다.
-</details>
-
-
-<br>
 
 ---
 
