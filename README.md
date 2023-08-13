@@ -38,7 +38,7 @@
 
 
 ### 구현화면
-![8TeamPage](https://github.com/sinw212/HotelReservation/assets/53486320/99318b80-5e21-42cf-8843-40ab7cf14aa3)
+![image](https://github.com/sinw212/TeamPage/assets/53486320/af649a4f-cbaa-4144-809b-ff6d7697e182)
 ![project_intro03](https://github.com/Team4Page/TeamPage/assets/139089298/b759640a-6709-422c-8589-8207617cca71)
 
 ---
